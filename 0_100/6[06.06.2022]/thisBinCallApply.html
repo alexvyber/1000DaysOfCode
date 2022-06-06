@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Function</title>
+  </head>
+  <body>
+    <script>
+      // bind, apply and call
+      let A = {
+        msg: "hello",
+        lie() {
+          console.log("Im the god himself!");
+        },
+        tell() {
+          console.log("Here we go again!");
+          console.log(this);
+          this.lie();
+          return true;
+        },
+        reg(what) {
+          setTimeout(
+            function () {
+              console.log(what, this.msg);
+            }.bind(A),
+            1000
+          );
+        },
+        arr(what) {
+          setTimeout(() => {
+            console.log(what, this.msg);
+          }, 1000);
+        },
+      };
+
+      function test(arg1, arg2) {
+        console.log(arg1, arg2);
+        console.log(this);
+      }
+
+      const Obj = {
+        prop: "Im a prop",
+        method() {
+          console.log("Im am Obj method");
+        },
+      };
+
+      function func(arg1, arg2) {
+        console.log(arg1, arg2);
+        console.log(arguments);
+        console.log(this);
+      }
+
+      const binded_func = func.bind(Obj);
+
+      // func.apply(A, ["first", "not first"]),
+      // func.apply(Obj, ["first", "not first"])
+
+      func.call(A, "one", "two");
+      func.call(Obj, "one", "two");
+    </script>
+  </body>
+</html>

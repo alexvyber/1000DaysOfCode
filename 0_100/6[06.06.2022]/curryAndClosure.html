@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Currying and Closure</title>
+  </head>
+  <body>
+    <script>
+      function first() {
+        return function second() {
+          return function third() {
+            return "hi, im third";
+          };
+        };
+      }
+
+      function add(a, b) {
+        if (!Number.isInteger(a)) throw "Invalid a";
+        if (!Number.isInteger(b)) throw "Invalid b";
+        return a + b;
+      }
+
+      function curry_add(a) {
+        if (!Number.isInteger(a)) throw "Invalid a";
+        return function (b) {
+          if (!Number.isInteger(b)) throw "Invalid b";
+          return a + b;
+        };
+      }
+
+      function closure(initial) {
+        let total = initial;
+        return function (count) {
+          total += count;
+          console.log(total);
+        };
+      }
+
+      const countFromZero = closure(0);
+      countFromZero(1);
+      countFromZero(2);
+      countFromZero(4);
+      const countFromZillion = closure(10000000);
+      countFromZillion(1000);
+      countFromZillion(10000);
+      countFromZillion(100000);
+    </script>
+  </body>
+</html>
