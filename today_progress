@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+
+seconds_since_start=$(( $(date +'%s') - $(date --date='2022-05-31 00:00:01' +'%s') ))
+days_since_start=$(( $seconds_since_start / 60 / 60 / 24 ))
+name_today=$( echo "$days_since_start[$(date +'%d.%m.%Y')]" )
+
+today_path="/home/alexs/learn/1000days/0_100/${name_today}.md"
+# echo "### $( date +"%d.%m.%Y")" > $today_path
+nvim $today_path
+ 
+
