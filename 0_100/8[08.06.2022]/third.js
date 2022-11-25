@@ -3,9 +3,9 @@
 comments
 */
 
-const name = 'Jhon'
+const name = "Jhon";
 // More comments
-const jhon = 'Name'
+const jhon = "Name";
 /* Some comment
 one
 two
